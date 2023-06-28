@@ -1,0 +1,12 @@
+.page__authentication-registration {
+  flex-grow: 1;
+  font-family: 'Inter';
+  padding: 60px 0 0;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 580px) {
+  .page__authentication-registration {
+    padding-top: 40px;
+  }
+}

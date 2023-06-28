@@ -1,0 +1,6 @@
+.cards {
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+  font-style: normal;
+}

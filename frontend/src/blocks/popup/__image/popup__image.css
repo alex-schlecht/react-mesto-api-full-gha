@@ -1,0 +1,9 @@
+.popup__image {
+  max-width: 75vh;
+  max-height: 75vh;
+  min-width: 282px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}

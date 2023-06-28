@@ -1,0 +1,10 @@
+.authentication-registration__button_disabled {
+  background-color: white;
+  color: rgba(0, 0, 0, .2);
+  cursor: default;
+  border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.authentication-registration__button_disabled:hover {
+  background-color: white;
+}

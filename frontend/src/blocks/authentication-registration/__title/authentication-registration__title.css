@@ -1,0 +1,16 @@
+.authentication-registration__title {
+  text-align: center;
+  font-style: normal;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 580px) {
+  .authentication-registration__title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

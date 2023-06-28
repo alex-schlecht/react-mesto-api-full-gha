@@ -1,0 +1,12 @@
+.authentication-registration__form {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 0 0;
+}
+
+@media screen and (max-width: 580px) {
+  .authentication-registration__form {
+    padding: 0 30px;
+    margin-top: 40px;
+  }
+}

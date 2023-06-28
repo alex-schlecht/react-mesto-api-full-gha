@@ -1,0 +1,15 @@
+.content__cards {
+  padding: 50px 0 0;
+}
+
+@media screen and (max-width: 890px) {
+  .content__cards {
+    padding: 50px 19px 0;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .content__cards {
+    padding-top: 36px;
+  }
+}

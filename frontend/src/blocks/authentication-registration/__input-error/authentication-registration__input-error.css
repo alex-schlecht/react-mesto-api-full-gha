@@ -1,0 +1,8 @@
+.authentication-registration__input-error {
+  color: red;
+  font-size: 12px;
+  line-height: 15px;
+  opacity: 0;
+  min-height: 30px;
+  margin: 1px 0 0;
+}

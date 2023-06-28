@@ -1,0 +1,11 @@
+.page__header {
+  display: flex;
+  justify-content: space-between;
+  margin: 45px 0 0;
+}
+
+@media screen and (max-width: 580px) {
+  .page__header {
+    margin-top: 28px;
+  }
+}

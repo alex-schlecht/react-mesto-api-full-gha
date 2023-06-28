@@ -1,0 +1,15 @@
+.authentication-registration__input {
+  font-size: 14px;
+  line-height: 17px;
+  color: white;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  padding: 0 0 8px;
+}
+
+.authentication-registration__input::placeholder {
+  color: #CCC;
+  opacity: 1;
+}

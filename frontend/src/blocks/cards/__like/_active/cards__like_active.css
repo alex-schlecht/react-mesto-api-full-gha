@@ -1,0 +1,12 @@
+.cards__like_active {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background: center;
+  background-image: url(../../../../images/like-black.svg);
+  transition: all 1s ease-out;
+}
+
+.cards__like_active:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

@@ -1,0 +1,27 @@
+.authentication-registration__button {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  cursor: pointer;
+  border-radius: 2px;
+  width: 100%;
+  padding: 12px 0;
+  margin: 187px 0 0;
+}
+
+@media screen and (max-width: 910px) {
+  .authentication-registration__button {
+    font-size: 16px;
+    line-height: 19px;
+    padding: 12px 0px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .authentication-registration__button {
+    font-size: 16px;
+    line-height: 19px;
+    margin-top: 143px;
+  }
+}
