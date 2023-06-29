@@ -22,7 +22,7 @@ module.exports.getUserInfo = (req, res, next) => {
   const { _id } = req.user;
   User.findById(_id)
     .orFail()
-    .then((user) => res.send({ user }))
+    .then((user) => res.send(user))
     .catch((err) => errorHandler(err, res, next));
 };
 
@@ -70,7 +70,7 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
-  User.findUserByCredentials(email, password)
+  User.findUserByCredentials(email, password, next)
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
@@ -81,7 +81,7 @@ module.exports.login = (req, res, next) => {
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
-        }).send({});
+        }).send({ email: user.email, name: user.name });
     })
     .catch((err) => next(err));
 };
@@ -91,7 +91,7 @@ module.exports.updateUserProfile = (req, res, next) => {
   const { _id } = req.user;
 
   User.findByIdAndUpdate(_id, { name, about }, { new: true, runValidators: true })
-    .then((user) => res.send({ user }))
+    .then((user) => res.send(user))
     .catch((err) => errorHandler(err, res, next));
 };
 
@@ -100,6 +100,14 @@ module.exports.updateUserAvatar = (req, res, next) => {
   const { _id } = req.user;
 
   User.findByIdAndUpdate(_id, { avatar }, { new: true, runValidators: true })
-    .then((user) => res.send({ user }))
+    .then((user) => res.send(user))
     .catch((err) => errorHandler(err, res, next));
 };
+
+module.exports.logout = (req, res) => {
+  res.cookie('jwt', '', {
+    maxAge: 0,
+    httpOnly: true,
+  }).send({});
+};
+

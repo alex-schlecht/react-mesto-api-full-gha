@@ -4,6 +4,9 @@ const { errorHandler } = require('../utils/utils');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
+    .sort({ createdAt: -1 })
+    .populate('likes')
+    .populate('owner')
     .then((cards) => res.send({ cards }))
     .catch((err) => errorHandler(err, res, next));
 };
@@ -12,9 +15,9 @@ module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
   const { _id } = req.user;
 
-  Card.create({ name, link, owner: _id })
+  Card.create({ name, link, owner: userId })
     .then((card) => card.populate('owner'))
-    .then((card) => res.status(201).send({ card }))
+    .then((card) => res.status(201).send(card))
     .catch((err) => errorHandler(err, res, next));
 };
 
@@ -42,7 +45,8 @@ module.exports.likeCard = (req, res, next) => {
     { new: true },
   ).orFail()
     .populate('likes')
-    .then((cards) => res.send({ cards }))
+    .populate('owner')
+    .then((cards) => res.send(cards))
     .catch((err) => errorHandler(err, res, next));
 };
 
@@ -53,6 +57,8 @@ module.exports.removeLikeCard = (req, res, next) => {
     { $pull: { likes: _id } },
     { new: true },
   ).orFail()
-    .then((cards) => res.send({ cards }))
+    .populate('likes')
+    .populate('owner')
+    .then((cards) => res.send(cards))
     .catch((err) => errorHandler(err, res, next));
 };

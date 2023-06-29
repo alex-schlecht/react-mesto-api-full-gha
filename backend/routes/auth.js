@@ -4,6 +4,7 @@ const router = require('express').Router();
 const {
   login,
   createUser,
+  logout,
 } = require('../controllers/users');
 const { URI_REGEX } = require('../utils/constants');
 
@@ -23,5 +24,7 @@ router.post('/signup', celebrate({
     avatar: Joi.string().min(2).pattern(URI_REGEX),
   }),
 }), createUser);
+
+router.get('/signout', logout);
 
 module.exports = router;
