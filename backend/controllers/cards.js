@@ -13,7 +13,7 @@ module.exports.getCards = (req, res, next) => {
 
 module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
-  const { _id } = req.user;
+  const userId = req.user._id;
 
   Card.create({ name, link, owner: userId })
     .then((card) => card.populate('owner'))

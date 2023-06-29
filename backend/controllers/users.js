@@ -110,4 +110,3 @@ module.exports.logout = (req, res) => {
     httpOnly: true,
   }).send({});
 };
-

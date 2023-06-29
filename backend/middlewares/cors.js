@@ -2,7 +2,7 @@ const { DEFAULT_ALLOWED_METHODS, ALLOWED_DOMAIN_NAME } = require('../utils/const
 
 const filterCors = (req, res, next) => {
   const { method } = req;
-  const { origin } =req.headers;
+  const { origin } = req.headers;
   const requestHeaders = req.headers['access-control-request-headers'];
 
   if (ALLOWED_DOMAIN_NAME.includes(origin)) {
