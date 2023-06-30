@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+import { API_URL } from "./constants";
 
 const validationResponse = (response) => {
   if(!response.ok) {
@@ -12,39 +12,46 @@ const validationResponse = (response) => {
   return response.json();
 }
 
-export const checkToken = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((res) => validationResponse(res))
-    .then((data) => data);
-};
+export const checkToken = () => fetch(`${API_URL}/users/me`, {
+  method: 'GET',
+  credentials: "include",
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+})
+  .then((res) => validationResponse(res))
+  .then((data) => data);
 
-export const register = (email, password) => {
-  return fetch(`${BASE_URL}/signup`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({email, password}),
-  })
-    .then((res) => validationResponse(res));
-}
 
-export const authorize = (email, password) => {
-  return fetch(`${BASE_URL}/signin`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({email, password}),
-  })
+export const register = (email, password) => fetch(`${API_URL}/signup`, {
+  method: 'POST',
+  credentials: "include",
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({email, password}),
+})
   .then((res) => validationResponse(res));
-};
+
+
+export const authorize = (email, password) => fetch(`${API_URL}/signin`, {
+  method: 'POST',
+  credentials: "include",
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({email, password}),
+})
+.then((res) => validationResponse(res));
+
+export const logout = () => fetch(`${API_URL}/signout`, {
+  method: 'GET',
+  credentials: "include",
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+}).then((res) => validationResponse(res));

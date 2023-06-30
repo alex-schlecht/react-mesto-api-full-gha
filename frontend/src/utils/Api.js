@@ -1,3 +1,5 @@
+import { API_URL } from './constants';
+
 class Api {
   constructor({apiMainUrl, headers}) {
     this._apiMainUrl = apiMainUrl;
@@ -13,18 +15,21 @@ class Api {
   }
   getCards() {
     return this._request('/cards', {
-      headers: this._headers
+      headers: this._headers,
+      credentials: "include"
     });
   }
   getUserInfo() {
     return this._request('/users/me', {
       headers: this._headers,
+      credentials: "include",
       method: 'GET'
     });
   }
   patchUserInfo(name, about) {
     return this._request('/users/me', {
       headers: this._headers,
+      credentials: "include",
       method: 'PATCH',
       body: JSON.stringify({
         name: name,
@@ -35,6 +40,7 @@ class Api {
   postCard(name, link) {
     return this._request('/cards', {
       headers: this._headers,
+      credentials: "include",
       method: 'POST',
       body: JSON.stringify({
         name: name,
@@ -45,24 +51,28 @@ class Api {
   deleteCard(_id) {
     return this._request(`/cards/${_id}`, {
       headers: this._headers,
+      credentials: "include",
       method: 'DELETE'
     });
   }
   putLike(_id) {
     return this._request(`/cards/${_id}/likes`, {
       headers: this._headers,
+      credentials: "include",
       method: 'PUT'
     });
   }
   deleteLike(_id) {
     return this._request(`/cards/${_id}/likes`, {
       headers: this._headers,
+      credentials: "include",
       method: 'DELETE'
     });
   }
   patchAvatar(avatar) {
     return this._request(`/users/me/avatar`, {
       headers: this._headers,
+      credentials: "include",
       method: 'PATCH',
       body: JSON.stringify({
         avatar: avatar
@@ -72,9 +82,8 @@ class Api {
 }
 
 const NewApi = new Api({
-  apiMainUrl: 'https://mesto.nomoreparties.co/v1/cohort-60',
+  apiMainUrl: API_URL,
   headers: { 
-    authorization: 'fb254d0d-24c1-470a-bc0c-68d2d2e3fa16',
     'Content-type': 'application/json',
   },
 });

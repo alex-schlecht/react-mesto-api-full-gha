@@ -1,5 +1,5 @@
-module.exports.pageNotFound = (req, res) => {
-  res.status(404).send({
-    message: 'Страница не найдена',
-  });
+const PageNotFound = require('../errors/PageNotFound');
+
+module.exports.pageNotFound = (req, res, next) => {
+  next(new PageNotFound('Page Not Found'));
 };
