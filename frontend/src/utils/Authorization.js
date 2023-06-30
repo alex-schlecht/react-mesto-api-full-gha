@@ -26,6 +26,7 @@ export const checkToken = () => fetch(`${API_URL}/users/me`, {
 
 export const register = (email, password) => fetch(`${API_URL}/signup`, {
   method: 'POST',
+  credentials: "include",
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
@@ -48,6 +49,7 @@ export const authorize = (email, password) => fetch(`${API_URL}/signin`, {
 
 export const logout = () => fetch(`${API_URL}/signout`, {
   method: 'GET',
+  credentials: "include",
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
