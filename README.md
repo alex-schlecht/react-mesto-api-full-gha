@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.74.235
+IP 158.160.74.235
 
 Frontend https://mestoapi.nomoreparties.sbs
 
