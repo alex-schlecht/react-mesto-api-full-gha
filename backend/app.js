@@ -29,10 +29,9 @@ app.use(filterCors);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
-    console.log('crash');
     throw new Error('Сервер сейчас упадёт');
   }, 0);
-}); 
+});
 
 app.use('/cards', checkAuthorizedUser, cards);
 app.use('/users', checkAuthorizedUser, users);
