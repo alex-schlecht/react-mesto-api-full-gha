@@ -1,4 +1,4 @@
-module.exports.URI_REGEX = /^(http|https):\/\/(\d|\w)[0-9a-zA-Z.\/-]+\.[0-9a-zA-Z.\/-]+$/;
+module.exports.URI_REGEX = /^(http|https):\/\/(\d|\w)[0-9a-zA-Z.-]+\.[0-9a-zA-Z.\/-]+$/;
 
 module.exports.DEFAULT_ALLOWED_METHODS = 'GET,PUT,PATCH,POST,HEAD,DELETE';
 module.exports.ALLOWED_DOMAIN_NAME = [
