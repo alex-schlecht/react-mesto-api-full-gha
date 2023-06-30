@@ -10,8 +10,8 @@ module.exports.ALLOWED_DOMAIN_NAME = [
   'https://www.mestoapi.nomoreparties.sbs',
   'http://www.api.mestoapi.nomoreparties.sbs',
   'https://www.api.mestoapi.nomoreparties.sbs',
-  'https://84.252.138.20',
-  'http://84.252.138.20',
-  'https://www.84.252.138.20',
-  'http://www.84.252.138.20',
+  'https://158.160.74.235',
+  'http://158.160.74.235',
+  'https://www.158.160.74.235',
+  'http://www.158.160.74.235',
 ];
