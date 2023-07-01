@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentuserContext';
 import { CardsContext } from '../contexts/CardsContext';
 
+
 const Main = ({
   onEditProfile,
   onAddMesto,
@@ -16,13 +17,13 @@ const Main = ({
   onCardDelete
 }) => {
 
-  const currentUser = useContext(CurrentUserContext);
-    const { cards, setCards } = useContext(CardsContext);
+  const [ currentUser, setCurrentUser ] = useContext(CurrentUserContext);
+    const [ cards, setCards ] = useContext(CardsContext);
 
     useEffect(() => {
       Promise.all([Api.getUserInfo(), Api.getCards()])
         .then(([userInfo, card]) => {
-          // setCurrentUser(userInfo)
+          setCurrentUser(userInfo)
           setCards(card.cards);
         })
         .catch((error) => console.log(error));
@@ -44,7 +45,7 @@ const Main = ({
       </section>
       <section className="cards content__cards">
         <ul className="cards__items">
-          {cards.map((card) => (
+          {cards && cards.map((card) => (
             <Card
               card={card}
               key={card._id}

@@ -19,7 +19,7 @@ import Login from './Login';
 import loginErrorImage from '../images/login-error.svg';
 import loginSuccessImage from '../images/login-success.svg';
 import Register from './Register';
-import { register, authorize, checkToken } from '../utils/Authorization';
+import { register, authorize, checkToken, logout } from '../utils/Authorization';
 import InfoTooltip from './InfoTooltip';
 
 const App = () => {
@@ -101,10 +101,13 @@ const App = () => {
   }
 
   const handleLogout = () => {
-    // localStorage.removeItem('jwt');
-    setUserEmail('');
-    setLoggedIn(false);
-    navigate('/sign-in', {replace: true});
+    logout()
+    .then(() => {
+      localStorage.removeItem('jwt');
+      setUserEmail('');
+      setLoggedIn(false);
+      navigate('/sign-in', {replace: true});
+    })
   }
 
   function handleEditAvatarOpen () {
@@ -189,8 +192,8 @@ const App = () => {
   }
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <CardsContext.Provider value={cards}>
+    <CurrentUserContext.Provider value={[currentUser, setCurrentUser]}>
+      <CardsContext.Provider value={[cards, setCards]}>
         <div className="page">
           <Header 
             onLogOut={handleLogout}
