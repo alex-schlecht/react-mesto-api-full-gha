@@ -88,7 +88,6 @@ const App = () => {
       .then ((data) => {
         if(data.email) {
           setUserEmail(data.email);
-          // localStorage.setItem('jwt', data.token);
           setLoggedIn(true);
           navigate('/', {replace: true});
         }
