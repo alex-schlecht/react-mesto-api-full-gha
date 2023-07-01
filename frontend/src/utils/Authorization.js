@@ -35,7 +35,6 @@ export const register = (email, password) => fetch(`${API_URL}/signup`, {
 })
   .then((res) => validationResponse(res));
 
-
 export const authorize = (email, password) => fetch(`${API_URL}/signin`, {
   method: 'POST',
   credentials: "include",

@@ -14,8 +14,19 @@ const Main = ({
   onCardDelete
 }) => {
 
+
+
   const currentUser = useContext(CurrentUserContext);
-  const cards = useContext(CardsContext);
+    const { cards, setCards } = useContext(CardsContext);
+
+    useEffect(() => {
+      Promise.all([Api.getUserInfo(), Api.getCards()])
+        .then(([userInfo, card]) => {
+          // setCurrentUser(userInfo)
+          setCards(card.cards);
+        })
+        .catch((error) => console.log(error));
+    }, []);
 
   return (
     <main className="content page__content">

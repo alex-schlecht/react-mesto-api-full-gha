@@ -43,15 +43,6 @@ const App = () => {
   });
 
   useEffect(() => {
-    Promise.all([Api.getUserInfo(), Api.getCards()])
-      .then(([userInfo, card]) => {
-        setCurrentUser(userInfo)
-        setCards(card.cards);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
-  useEffect(() => {
 /*     if(localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
       if (jwt) {
