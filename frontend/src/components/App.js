@@ -52,7 +52,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if(localStorage.getItem('jwt')) {
+/*     if(localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
       if (jwt) {
         checkToken(jwt)
@@ -65,7 +65,16 @@ const App = () => {
           })
           .catch((error) => console.log(error));
       }
-    }
+    } */
+    checkToken()
+    .then((res) => {
+      if (res) {
+        setUserEmail(res.data.email);
+        setLoggedIn(true);
+        navigate('/', { replace: true });
+      }
+    })
+    .catch((error) => console.log(error));
   }, []);
 
   const handleRegister = (email, password) => {
@@ -86,9 +95,9 @@ const App = () => {
   const handleLogin = (email, password) => {
     authorize(email, password) 
       .then ((data) => {
-        if(data.token) {
-          setUserEmail(email);
-          localStorage.setItem('jwt', data.token);
+        if(data.email) {
+          setUserEmail(data.email);
+          // localStorage.setItem('jwt', data.token);
           setLoggedIn(true);
           navigate('/', {replace: true});
         }
@@ -101,7 +110,7 @@ const App = () => {
   }
 
   const handleLogout = () => {
-    localStorage.removeItem('jwt');
+    // localStorage.removeItem('jwt');
     setUserEmail('');
     setLoggedIn(false);
     navigate('/sign-in', {replace: true});
