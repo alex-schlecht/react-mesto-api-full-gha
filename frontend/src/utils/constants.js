@@ -1,1 +1,1 @@
-module.exports.API_URL = 'api.mestoapi.nomoreparties.sbs';
+module.exports.API_URL = '//api.mestoapi.nomoreparties.sbs';
