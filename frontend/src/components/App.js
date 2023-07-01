@@ -67,9 +67,9 @@ const App = () => {
       }
     } */
     checkToken()
-    .then((res) => {
-      if (res) {
-        setUserEmail(res.data.email);
+    .then((data) => {
+      if (data) {
+        setUserEmail(data.email);
         setLoggedIn(true);
         navigate('/', { replace: true });
       }
