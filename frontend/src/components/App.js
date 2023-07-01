@@ -46,7 +46,7 @@ const App = () => {
     Promise.all([Api.getUserInfo(), Api.getCards()])
       .then(([userInfo, card]) => {
         setCurrentUser(userInfo)
-        setCards(card);
+        setCards(card.cards);
       })
       .catch((error) => console.log(error));
   }, []);
