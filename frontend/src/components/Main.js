@@ -1,4 +1,6 @@
+import Api from '../../src/utils/Api';
 import React from 'react';
+import { useEffect } from 'react';
 import Card from './Card';
 import { useContext } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentuserContext';
@@ -13,8 +15,6 @@ const Main = ({
   onCardLike,
   onCardDelete
 }) => {
-
-
 
   const currentUser = useContext(CurrentUserContext);
     const { cards, setCards } = useContext(CardsContext);
