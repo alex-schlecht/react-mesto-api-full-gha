@@ -48,13 +48,13 @@ module.exports.createUser = (req, res, next) => {
       email,
       password: hash,
     }))
-    .then((newUser) => {
+    .then((user) => {
       res.status(201).send({
-        name: newUser.name,
-        about: newUser.about,
-        avatar: newUser.avatar,
-        email: newUser.email,
-        _id: newUser._id,
+        name: user.name,
+        about: user.about,
+        avatar: user.avatar,
+        email: user.email,
+        _id: user._id,
       });
     })
     .catch((err) => {
