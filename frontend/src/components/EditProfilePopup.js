@@ -7,7 +7,7 @@ import { CurrentUserContext } from "../contexts/CurrentuserContext";
 const EditProfilePopup = ({isPopupOpen, onUpdateUser, onClose, onCloseOverlay}) => {
   const [inputValid, setInputValid] = useState(false);
   const error = `popup__error ${!inputValid ? 'popup__error_visible' : ''}`;
-  const currentUser = useContext(CurrentUserContext);
+  const [ currentUser ] = useContext(CurrentUserContext);
   const name = useValidation();
   const description = useValidation();
 

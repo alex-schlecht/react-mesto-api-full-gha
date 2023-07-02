@@ -23,7 +23,6 @@ const Main = ({
   useEffect(() => {
     Promise.all([Api.getUserInfo(), Api.getCards()])
       .then(([userInfo, card]) => {
-        console.log(userInfo);
         setCurrentUser(userInfo)
         setCards(card.cards);
       })
