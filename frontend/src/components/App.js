@@ -12,7 +12,7 @@ import DeleteCardConfirm from './DeleteCardConfirm';
 import EditAvatarPopup from './EditAvatarPopup';
 import EditProfilePopup from './EditProfilePopup';
 import AddMestoPopup from './AddMestoPopup';
-import { Route, Routes, useNavigate, useBeforeUnload } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 import ProtectedRoute from './ProtectedRoute';
 import Login from './Login';
@@ -43,29 +43,16 @@ const App = () => {
   });
 
   useEffect(() => {
-/*     if(localStorage.getItem('jwt')) {
-      const jwt = localStorage.getItem('jwt');
-      if (jwt) {
-        checkToken(jwt)
-          .then((res) => {
-            if (res) {
-              setUserEmail(res.data.email);
-              setLoggedIn(true);
-              navigate('/', { replace: true });
-            }
-          })
-          .catch((error) => console.log(error));
-      }
-    } */
     checkToken()
-    .then((data) => {
-      if (data) {
-        setUserEmail(data.email);
-        setLoggedIn(true);
-        navigate('/', { replace: true });
-      }
-    })
-    .catch((error) => console.log(error));
+      .then((data) => {
+        if (data) {
+          setUserEmail(data.email);
+          setLoggedIn(true);
+          navigate('/', { replace: true });
+        }
+      })
+      .catch((error) => console.log(error));
+    // eslint-disable-next-line
   }, []);
 
   const handleRegister = (email, password) => {
@@ -81,7 +68,7 @@ const App = () => {
         setTooltipText(res);
         setIsTooltipPopupOpen(true);  
       }
-  )}
+      )}
 
   const handleLogin = (email, password) => {
     authorize(email, password) 
@@ -101,12 +88,12 @@ const App = () => {
 
   const handleLogout = () => {
     logout()
-    .then(() => {
-      localStorage.removeItem('jwt');
-      setUserEmail('');
-      setLoggedIn(false);
-      navigate('/sign-in', {replace: true});
-    })
+      .then(() => {
+        localStorage.removeItem('jwt');
+        setUserEmail('');
+        setLoggedIn(false);
+        navigate('/sign-in', {replace: true});
+      })
   }
 
   function handleEditAvatarOpen () {
@@ -143,7 +130,7 @@ const App = () => {
   function handleCardDelete (card) {
     Api.deleteCard(card._id)
       .then(() => {
-        setCards((state) => state.filter((item) => card._id !== item._id))
+        setCards((state) => state.filter((item) => item._id !== card._id))
         closeAllPopups()
       })
       .catch((error) => console.log(error))

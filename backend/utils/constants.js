@@ -14,4 +14,5 @@ module.exports.ALLOWED_DOMAIN_NAME = [
   'http://158.160.74.235',
   'https://www.158.160.74.235',
   'http://www.158.160.74.235',
+  'http://localhost:3000',
 ];

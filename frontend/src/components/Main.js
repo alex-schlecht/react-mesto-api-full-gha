@@ -18,16 +18,18 @@ const Main = ({
 }) => {
 
   const [ currentUser, setCurrentUser ] = useContext(CurrentUserContext);
-    const [ cards, setCards ] = useContext(CardsContext);
+  const [ cards, setCards ] = useContext(CardsContext);
 
-    useEffect(() => {
-      Promise.all([Api.getUserInfo(), Api.getCards()])
-        .then(([userInfo, card]) => {
-          setCurrentUser(userInfo)
-          setCards(card.cards);
-        })
-        .catch((error) => console.log(error));
-    }, []);
+  useEffect(() => {
+    Promise.all([Api.getUserInfo(), Api.getCards()])
+      .then(([userInfo, card]) => {
+        console.log(userInfo);
+        setCurrentUser(userInfo)
+        setCards(card.cards);
+      })
+      .catch((error) => console.log(error));
+  // eslint-disable-next-line    
+  }, []);
 
   return (
     <main className="content page__content">
@@ -45,7 +47,7 @@ const Main = ({
       </section>
       <section className="cards content__cards">
         <ul className="cards__items">
-          {cards && cards.map((card) => (
+          {cards?.map((card) => (
             <Card
               card={card}
               key={card._id}
